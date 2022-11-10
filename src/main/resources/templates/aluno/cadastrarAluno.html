@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title>Listagem de alunos</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+	
+</head>
+<body>
+	<div class="container">
+		<div class="panel-default">
+			<div class="text-center">
+				<h1 class="h4 text-gray-900 mb-4">Listagem de alunos</h1>
+			</div>
+			<div class="panel-body">
+			<form class="form-horizontal" th:action="@{/aluno/salvar}" th:object="${aluno}" method="POST" style="margin: 10px;">
+			<div class="form-group">
+			<fieldset>
+					<div class="form-group row">
+					<label>Nome</label>
+					<input type="text" class="form-control input-sm" th:field="*{nome}" placeholder="Informe o nome" maxlength="50"/>
+				</div>
+				<div class ="form-group row">
+				<label>Turma</label>
+				<select class="form-control" th:field= "*{turma}">
+					<option value = "">Selecione a turma</option>
+					<option th:each="objTurma : ${listaTurma}" th:value = "${objTurma.id}" th:text ="${objTurma.nome}"/>
+				</select>
+				</div>
+			</fieldset>
+			<div align="center">
+			<button type="submit" class="btn btn-sm btn-success">Salvar</button>
+			<a class="btn btn-sm btn-danger" th:href="@{/aluno/listarAlunos}">Cancelar</a>
+			</div>
+			
+			</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+</body>
+</html>
+			
