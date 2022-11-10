@@ -1,7 +1,9 @@
 package br.com.senac.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +34,15 @@ public class TurmaService {
 		Turma turma = select(turmaAlterada.getId());
 		turma.setNome(turmaAlterada.getNome());
 		insert(turma);
+	}
+	
+	public Turma buscaListaAlunosTurma(Integer id) {
+		Optional<Turma> turma = repo.findById(id);
+		return turma.orElseThrow(() -> new ObjectNotFoundException(id, "Turma não encontrada"));
+	}
+	
+	public Turma findTurmaByIdTurma(Integer id) {
+		Turma turma = repo.findTurmaByIdTurma(id);
+		return turma;
 	}
 }

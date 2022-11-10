@@ -27,7 +27,7 @@ public class Aluno implements Serializable{
 	@OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
 	private List<Endereco> enderecos= new ArrayList();
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_turma")
 	private Turma turma;
 	

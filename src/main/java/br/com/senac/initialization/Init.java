@@ -153,6 +153,17 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 				end.getAluno().getNome()+
 				" Rua: "+end.getRua())));
 		
+		
+		Turma turma = turmaService.buscaListaAlunosTurma(3);
+		
+		List<Aluno> alunosDaTurma = turma.getAlunos();
+		
+		alunosDaTurma.forEach((aluno) -> 
+		System.out.println("Nome do aluno: " + aluno.getNome()));
+		
+		
+		
+		
 //		List<Turma> listaTurmas = turmaService.selectAll();
 //		
 //		for (Turma turma : listaTurmas) {

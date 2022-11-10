@@ -15,5 +15,10 @@ public interface TurmaRepository extends JpaRepository<Turma, Integer>{
 			+" Join fetch t.alunos a"
 			+" where a.turma.id = ?1")
 	List<Turma> findAllByIdTurma(Integer idTurma);
+	
+	@Query("Select t from turma t "+
+	" left join t.alunos a "+
+	" where a.turma.id = ?1")
+	Turma findTurmaByIdTurma(Integer idTurma);
 
 }
